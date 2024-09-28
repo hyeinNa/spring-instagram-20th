@@ -91,5 +91,10 @@ public class PostRepositoryTest {
         assertThat(posts.get(0).getCaption()).isEqualTo("caption1");
         assertThat(posts.get(1).getCaption()).isEqualTo("caption2");
         assertThat(posts.get(2).getCaption()).isEqualTo("caption3");
+
+        // Then - 연관된 Member가 N+1 문제 없이 로드되었는지 확인
+        assertThat(posts.get(0).getMember()).isNotNull();
+        assertThat(posts.get(1).getMember()).isNotNull();
+        assertThat(posts.get(2).getMember()).isNotNull();
     }
 }
