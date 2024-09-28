@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
+@Getter
 @Builder // 빌더 패턴 적용
 @NoArgsConstructor // 기본 생성자
 @AllArgsConstructor // 모든 필드 포함 생성자
