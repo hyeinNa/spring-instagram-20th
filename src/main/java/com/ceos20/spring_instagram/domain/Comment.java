@@ -6,11 +6,10 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
-@Getter
-@Setter
 @Builder // 빌더 패턴 적용
 @NoArgsConstructor // 기본 생성자
 @AllArgsConstructor // 모든 필드 포함 생성자
@@ -30,6 +29,15 @@ public class Comment {
 
     private String text;
 
-    @CreatedDate // 생성 시간 자동으로 기록
+    @CreatedDate
     private LocalDateTime timestamp;
+
+    // 자기 참조 관계 설정 (대댓글)
+    @ManyToOne
+    @JoinColumn(name = "parent_comment_id")
+    private Comment parentComment;
+
+    // 대댓글 리스트
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL)
+    private List<Comment> replies;
 }
