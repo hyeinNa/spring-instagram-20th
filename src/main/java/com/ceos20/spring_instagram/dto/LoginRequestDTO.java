@@ -5,5 +5,6 @@ import lombok.Getter;
 
 public class LoginRequestDTO {
     private Long memberId;
+    private String membername;
     private String password;
 }
