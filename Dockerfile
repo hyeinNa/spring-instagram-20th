@@ -7,5 +7,7 @@ WORKDIR /app
 # 3. Gradle 빌드 결과물 복사
 COPY build/libs/*.jar app.jar
 
+ENV SPRING_PROFILES_ACTIVE=prod
+
 # 4. 실행 명령 설정
 ENTRYPOINT ["java", "-jar", "app.jar"]
